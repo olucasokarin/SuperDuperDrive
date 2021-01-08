@@ -29,6 +29,11 @@ public class FileService {
         return fileMapper.getFile(fileId);
     }
 
+    public boolean verifyFileExists(String filename) {
+        User user = userService.getCurrentUser();
+        return fileMapper.getFileName(user.getUserId(), filename);
+    }
+
     public int createFile(MultipartFile multipartFile) throws IOException {
         User user = userService.getCurrentUser();
 
